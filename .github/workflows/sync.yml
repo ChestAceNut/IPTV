@@ -1,8 +1,11 @@
 name: Sync Fork with Upstream
 
+permissions:
+  contents: write
+
 on:
   schedule:
-    - cron: '0 0 * * *'  # 每天 UTC 0 点自动运行（北京时间 8 点）
+    - cron: '0 0 * * *' # 每天 UTC 0 点自动运行（北京时间 8 点）
   workflow_dispatch:      # 允许手动触发
 
 jobs:
@@ -15,7 +18,7 @@ jobs:
       - name: Sync upstream changes
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
         with:
-          target_sync_branch: main              # 你的 Fork 仓库的分支名
+          target_sync_branch: main
           target_repo_token: ${{ secrets.GITHUB_TOKEN }}
-          upstream_sync_repo: CCSH/IPTV         # 原仓库路径：作者名/仓库名
-          upstream_sync_branch: main            # 原仓库的分支名
+          upstream_sync_repo: CCSH/IPTV
+          upstream_sync_branch: main
